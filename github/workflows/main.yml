@@ -1,0 +1,34 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Add this line if you have dependencies
+        # Or, simply install pytest for testing
+        pip install pytest
+
+    - name: Run tests
+      run: |
+        pytest helloworld.py  # Replace with your actual test command
+
+    - name: Build application
+      run: |
+        
+
